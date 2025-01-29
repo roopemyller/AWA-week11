@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-
 import { Card, CardContent, Typography, Button, Box } from '@mui/material';
-
 
 interface Joke {
     type: string;
@@ -13,13 +11,14 @@ interface Joke {
 function FrontPage() {
     const [joke, setJoke] = useState<Joke | null>(null)  
     const [loading, setLoading] = useState<boolean>(false)
+    const [fetchTrigger, setFetchTrigger] = useState<number>(0)
 
     const fetchJoke = () => {
         setLoading(true)
         const controller = new AbortController()
-        // const signal = controller.signal
+        const signal = controller.signal
 
-        fetch('https://official-joke-api.appspot.com/random_joke')
+        fetch('https://official-joke-api.appspot.com/random_joke', {signal})
         .then(response => response.json())
         .then(data =>  {
             setJoke(data)
@@ -30,7 +29,6 @@ function FrontPage() {
                 console.log("Fetch aborted")
             } else {
                 console.log("Error fetching data", error)
-            
             }   
             setLoading(false)
         })
@@ -39,8 +37,11 @@ function FrontPage() {
 
     useEffect(() => {
         fetchJoke()
-    }, [])  
+    }, [fetchTrigger])  
 
+    const handleButtonClick = () => {
+        setFetchTrigger(prev => prev + 1)
+    }
 
   return (
     <Box sx={{ padding: 2 }}>
@@ -50,7 +51,7 @@ function FrontPage() {
         <Typography variant="body1">
             Click the button below to get a random joke!
         </Typography>
-        <Button variant="contained" sx={{ color: "white"}} onClick={fetchJoke}>
+        <Button variant="contained" sx={{ color: "white"}} onClick={handleButtonClick}>
             Get Joke
         </Button>
 
