@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { Card, CardContent, Typography, Button, Box } from '@mui/material';
 import { Joke } from '../hooks/useJokes';
 
+/*
 interface FrontPageProps {
     saveJoke?: (joke: Joke) => void
 }
+*/
 
-function FrontPage( {saveJoke}: FrontPageProps) {
+const FrontPage = ({ saveJoke }: { saveJoke?: (joke: Joke) => void }) => {
     const [joke, setJoke] = useState<Joke | null>(null)  
     const [loading, setLoading] = useState<boolean>(false)
     const [fetchTrigger, setFetchTrigger] = useState<number>(0)

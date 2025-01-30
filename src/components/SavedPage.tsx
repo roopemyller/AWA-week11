@@ -1,12 +1,13 @@
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import { Joke } from '../hooks/useJokes';
 
-
+/*
 interface SavedPageProps {
     savedJokes: Joke[]
 }
+*/
 
-function SavedPage({savedJokes}: SavedPageProps) {
+const SavedPage = ({ savedJokes }: { savedJokes: Joke[] }) => {
 
     console.log("savedJokes", savedJokes)
 
