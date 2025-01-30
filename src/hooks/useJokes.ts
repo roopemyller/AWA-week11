@@ -17,9 +17,9 @@ export const useJokes = () => {
     return true
   }
 
-  const deleteJoke = (joke: Joke) => {
-    setSavedJokes((prevJokes) => prevJokes.filter((j) => j.id !== joke.id))
-    console.log('Joke deleted:', joke)
+  const deleteJoke = (id: number) => {
+    setSavedJokes((prevJokes) => prevJokes.filter((j) => j.id !== id))
+    console.log('Joke deleted:', id)
   }
 
   return {savedJokes, saveJoke, deleteJoke}

@@ -3,7 +3,7 @@ import { Joke } from '../hooks/useJokes';
 
 interface SavedPageProps {
     savedJokes: Joke[]
-    deleteJoke: (joke: Joke) => void
+    deleteJoke: (joke: number) => void
 }
 
 function SavedPage({savedJokes, deleteJoke}: SavedPageProps) {
@@ -30,7 +30,7 @@ function SavedPage({savedJokes, deleteJoke}: SavedPageProps) {
                             <Typography variant="body2" color="text.secondary">
                                 {joke.punchline}
                             </Typography>
-                            <Button variant="contained" sx={{ color: "white"}} onClick={() => deleteJoke(joke)}>Delete</Button>
+                            <Button variant="contained" sx={{ color: "white"}} onClick={() => deleteJoke(joke.id)}>Delete</Button>
                         </CardContent>
                     </Card>
                 ))
