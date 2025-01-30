@@ -3,7 +3,7 @@ import { Joke } from '../hooks/useJokes';
 
 interface SavedPageProps {
     savedJokes: Joke[]
-    deleteJoke: (joke: Joke) => boolean
+    deleteJoke: (joke: Joke) => void
 }
 
 function SavedPage({savedJokes, deleteJoke}: SavedPageProps) {
