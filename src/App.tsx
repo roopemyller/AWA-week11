@@ -7,17 +7,17 @@ import Header from './components/Header'
 import useJokes from './hooks/useJokes'
 
 function App() {
-  const { savedJokes, saveJoke } = useJokes()
+  const jokesHook = useJokes()
   
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path='/' element={<>
-          <FrontPage saveJoke={saveJoke} />
+          <FrontPage {...jokesHook}/>
           </>} />
           <Route path='/saved' element={<>
-            <SavedPage savedJokes={savedJokes} />
+            <SavedPage {...jokesHook} />
           </>} />
       </Routes>
     </BrowserRouter>
