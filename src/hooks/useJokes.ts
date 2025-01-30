@@ -16,5 +16,12 @@ export const useJokes = () => {
     console.log('Joke saved:', joke)
     return true
   }
-  return {savedJokes, saveJoke}
+
+  const deleteJoke = (joke: Joke) => {
+    setSavedJokes((prevJokes) => prevJokes.filter((j) => j.id !== joke.id))
+    console.log('Joke deleted:', joke)
+    return true
+  }
+
+  return {savedJokes, saveJoke, deleteJoke}
 }

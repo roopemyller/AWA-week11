@@ -1,11 +1,12 @@
-import { Card, CardContent, Typography, Box } from '@mui/material';
+import { Card, CardContent, Typography, Box, Button } from '@mui/material';
 import { Joke } from '../hooks/useJokes';
 
 interface SavedPageProps {
     savedJokes: Joke[]
+    deleteJoke: (joke: Joke) => boolean
 }
 
-function SavedPage({savedJokes}: SavedPageProps) {
+function SavedPage({savedJokes, deleteJoke}: SavedPageProps) {
 
     console.log("savedJokes", savedJokes)
 
@@ -29,6 +30,7 @@ function SavedPage({savedJokes}: SavedPageProps) {
                             <Typography variant="body2" color="text.secondary">
                                 {joke.punchline}
                             </Typography>
+                            <Button variant="contained" sx={{ color: "white"}} onClick={() => deleteJoke(joke)}>Delete</Button>
                         </CardContent>
                     </Card>
                 ))
