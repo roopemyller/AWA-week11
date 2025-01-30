@@ -1,15 +1,27 @@
 
 import './App.css'
-import Header from './components/Header'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import FrontPage from './components/FrontPage'
+import SavedPage from './components/SavedPage'
+import useJokes from './hooks/useJokes'
+import Header from './components/Header'
 
 function App() {
-
+  const { savedJokes, saveJoke } = useJokes()
+  
   return (
-    <div className="App">
-      <Header />
-      <FrontPage />
-    </div> 
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<>
+          <Header />
+          <FrontPage savedJokes={savedJokes} saveJoke={saveJoke} />
+          </>} />
+          <Route path='/saved' element={<>
+            <Header />
+            <SavedPage savedJokes={savedJokes} />
+          </>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
