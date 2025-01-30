@@ -3,21 +3,20 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import FrontPage from './components/FrontPage'
 import SavedPage from './components/SavedPage'
-import useJokes from './hooks/useJokes'
 import Header from './components/Header'
+import useJokes from './hooks/useJokes'
 
 function App() {
   const { savedJokes, saveJoke } = useJokes()
   
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path='/' element={<>
-          <Header />
           <FrontPage saveJoke={saveJoke} />
           </>} />
           <Route path='/saved' element={<>
-            <Header />
             <SavedPage savedJokes={savedJokes} />
           </>} />
       </Routes>
