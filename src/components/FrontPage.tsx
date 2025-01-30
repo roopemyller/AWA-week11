@@ -4,10 +4,9 @@ import { Joke } from '../hooks/useJokes';
 
 interface FrontPageProps {
     saveJoke?: (joke: Joke) => void
-    savedJokes: Joke[]
 }
 
-function FrontPage( {savedJokes, saveJoke}: FrontPageProps) {
+function FrontPage( {saveJoke}: FrontPageProps) {
     const [joke, setJoke] = useState<Joke | null>(null)  
     const [loading, setLoading] = useState<boolean>(false)
     const [fetchTrigger, setFetchTrigger] = useState<number>(0)
@@ -44,8 +43,6 @@ function FrontPage( {savedJokes, saveJoke}: FrontPageProps) {
     const handleSaveJoke = () => {
         if(joke && saveJoke) {
             saveJoke(joke)
-            console.log("Joke saved")
-            console.log("savedJokes", savedJokes)   
         }
     }
 

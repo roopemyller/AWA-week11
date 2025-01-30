@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<>
           <Header />
-          <FrontPage savedJokes={savedJokes} saveJoke={saveJoke} />
+          <FrontPage saveJoke={saveJoke} />
           </>} />
           <Route path='/saved' element={<>
             <Header />
